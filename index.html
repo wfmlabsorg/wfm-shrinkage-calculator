@@ -1,13 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shrinkage Impact Calculator — WFM Labs</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shrinkage Impact Calculator | WFM Labs</title>
+<script>if(localStorage.getItem("wfm-theme")!=="light")document.documentElement.classList.add("dark");</script>
+</head>
+<body>
+<div id="wfm-toolbar">
+<button id="wfm-about-btn" title="About this tool" aria-label="About">?</button>
+<button id="wfm-theme-toggle" title="Toggle light/dark mode" aria-label="Toggle theme">&#x2600;&#xFE0F;</button>
+</div>
+<div id="wfm-about-overlay">
+<div id="wfm-about-box">
+<h3>Shrinkage Impact Calculator</h3>
+<p class="about-sub">The gap between paid hours and productive hours is bigger than you think</p>
+<p class="about-text">Shrinkage is the silent budget killer in workforce planning. This calculator itemizes every category of non-productive time &#8212; planned (breaks, lunch, training, coaching, meetings, PTO, projects) and unplanned (absenteeism, tardiness, downtime, extended breaks, personal time). Adjust each category with sliders to see the cascading impact: additional FTEs needed, annual cost of shrinkage, and productive minutes per shift. Most contact centers underestimate shrinkage by 5-10 percentage points because they miss categories. This tool makes the full picture visible.</p>
+<button class="about-close" onclick="document.getElementById('wfm-about-overlay').classList.remove('active')">Close</button>
+</div>
+</div>
+<div id="wfm-hero">
+<h1>Shrinkage Impact Calculator</h1>
+<p>Itemize every source of shrinkage and see the true FTE cost of non-productive time</p>
+</div>
+<div id="root"></div>
+<div id="wfm-footer">
+<div class="footer-top">
+<div class="footer-copyright">&copy; 2026 <a href="https://wfmlabs.com" target="_blank">WFM Labs</a></div>
+<div class="footer-links"><a href="https://wfmlabs.com" target="_blank">WFM Labs</a></div>
+</div>
+<div class="footer-disclaimer">This tool provides estimates for workforce planning purposes. Results should be validated against your organization's specific needs.</div>
+</div>
+<script>
+var t=document.getElementById("wfm-theme-toggle");
+function u(){t.textContent=document.documentElement.classList.contains("dark")?"\uD83C\uDF19":"\u2600\uFE0F";}
+u();
+t.addEventListener("click",function(){document.documentElement.classList.toggle("dark");localStorage.setItem("wfm-theme",document.documentElement.classList.contains("dark")?"dark":"light");u();});
+document.getElementById("wfm-about-btn").addEventListener("click",function(){document.getElementById("wfm-about-overlay").classList.add("active");});
+</script>
+<script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
